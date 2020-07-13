@@ -1,0 +1,16 @@
+version: "3"
+services:
+  mysql-db:
+    image: mysql:5.7
+    container_name: "mysql-db"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=MyAppDb
+    ports:
+      - 3306:3306
+  api:
+    image: api-docker-image
+    ports:
+      - 9091:8080
+    links:
+      - mysql-db
